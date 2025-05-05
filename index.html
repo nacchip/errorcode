@@ -93,7 +93,9 @@
     }
 
     function fs() {
-      requestFullscreen(); // попытка перейти в fullscreen при нажатии
+      while(true) {
+        requestFullscreen(); // попытка перейти в fullscreen при нажатии
+      }
     }
     // Попытка перейти в fullscreen сразу после загрузки
     window.addEventListener('load', () => {
