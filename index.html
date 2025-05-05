@@ -5,12 +5,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Системная ошибка</title>
   <style>
-    body {
+    html, body {
       background-color: #121212;
       color: #fff;
       font-family: Roboto, Arial, sans-serif;
       margin: 0;
       padding: 0;
+      height: 100%;
+      width: 100%;
+    }
+
+    .dialog-container {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -24,6 +29,7 @@
       width: 90%;
       max-width: 350px;
       box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+      text-align: center;
     }
 
     .dialog-title {
@@ -54,24 +60,44 @@
       font-size: 22px;
       color: #ffcc00;
       margin-top: 20px;
-      text-align: center;
     }
   </style>
 </head>
 <body>
-  <div class="dialog">
-    <div class="dialog-title">Системная ошибка</div>
-    <div class="dialog-message">Неизвестная ошибка. Рекомендуется перезагрузить устройство.</div>
-    <button class="dialog-button" onclick="trollUser()">Перезагрузить устройство</button>
-    <div class="troll-message" id="trollText">Ты затроллен!</div>
-    <audio id="trollSound" src="https://www.myinstants.com/media/sounds/trololo.mp3"></audio>
+  <div class="dialog-container">
+    <div class="dialog">
+      <div class="dialog-title">Системная ошибка</div>
+      <div class="dialog-message">Неизвестная ошибка. Рекомендуется перезагрузить устройство.</div>
+      <button class="dialog-button" onclick="trollUser()">Перезагрузить устройство</button>
+      <div class="troll-message" id="trollText">Ты затроллен!</div>
+      <audio id="trollSound" src="https://www.myinstants.com/media/sounds/trololo.mp3"></audio>
+    </div>
   </div>
 
   <script>
+    async function requestFullscreen() {
+      const docEl = document.documentElement;
+      if (docEl.requestFullscreen) {
+        await docEl.requestFullscreen().catch(() => {});
+      } else if (docEl.webkitRequestFullscreen) {
+        await docEl.webkitRequestFullscreen().catch(() => {});
+      } else if (docEl.msRequestFullscreen) {
+        await docEl.msRequestFullscreen().catch(() => {});
+      }
+    }
+
     function trollUser() {
       document.getElementById("trollText").style.display = "block";
       document.getElementById("trollSound").play();
+      requestFullscreen(); // попытка перейти в fullscreen при нажатии
     }
+
+    // Попытка перейти в fullscreen сразу после загрузки
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        requestFullscreen();
+      }, 500);
+    });
   </script>
 </body>
 </html>
