@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Системная ошибка</title>
+  <style>
+    body {
+      background-color: #121212;
+      color: #fff;
+      font-family: Roboto, Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .dialog {
+      background-color: #1f1f1f;
+      border-radius: 10px;
+      padding: 24px;
+      width: 90%;
+      max-width: 350px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+    }
+
+    .dialog-title {
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: #ff3b3b;
+    }
+
+    .dialog-message {
+      font-size: 16px;
+      color: #cccccc;
+      margin-bottom: 24px;
+    }
+
+    .dialog-button {
+      background-color: #03dac5;
+      color: #000;
+      border: none;
+      padding: 12px 20px;
+      font-size: 16px;
+      border-radius: 6px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .troll-message {
+      display: none;
+      font-size: 22px;
+      color: #ffcc00;
+      margin-top: 20px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="dialog">
+    <div class="dialog-title">Системная ошибка</div>
+    <div class="dialog-message">Неизвестная ошибка. Рекомендуется перезагрузить устройство.</div>
+    <button class="dialog-button" onclick="trollUser()">Перезагрузить устройство</button>
+    <div class="troll-message" id="trollText">Ты затроллен!</div>
+    <audio id="trollSound" src="https://www.myinstants.com/media/sounds/trololo.mp3"></audio>
+  </div>
+
+  <script>
+    function trollUser() {
+      document.getElementById("trollText").style.display = "block";
+      document.getElementById("trollSound").play();
+    }
+  </script>
+</body>
+</html>
