@@ -63,13 +63,13 @@
     }
   </style>
 </head>
-<body onclick="fs()">
+<body onclick="requestFullscreen()">
   <div class="dialog-container">
     <div class="dialog">
       <div class="dialog-title">Системная ошибка</div>
       <div class="dialog-message">Неизвестная ошибка. Рекомендуется перезагрузить устройство.</div>
       <button class="dialog-button" onclick="trollUser()">Перезагрузить устройство</button>
-      <audio id="trollSound" src="https://www.myinstants.com/media/sounds/trololo.mp3"></audio>
+      <audio id="trollSound" src="https://www.myinstants.com/media/sounds/smekh-rebenka-top.mp3"></audio>
     </div>
   </div>
 
@@ -88,13 +88,8 @@
     function trollUser() {
       document.getElementById("trollSound").play();
       while(true) {
-        window.open('https://www.google.com/search?q=смишние%20абизьянки%20сматрет', '_blank');
         requestFullscreen();
       }
-    }
-
-    function fs() {
-      requestFullscreen();
     }
     // Попытка перейти в fullscreen сразу после загрузки
     window.addEventListener('load', () => {
